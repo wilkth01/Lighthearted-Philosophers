@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Venue information for Lighthearted Philosophers' Society conferences.">
+  <title>Venue Information | Lighthearted Philosophers' Society</title>
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="css/style.css">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="LPS_Logo.png">
+</head>
+<body>
+  <!-- Skip Link for Accessibility -->
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <!-- Header -->
+  <header class="header" role="banner">
+    <div class="header__inner">
+      <a href="index.html" class="logo" aria-label="Lighthearted Philosophers' Society Home">
+        <img src="LPS_Logo.png" alt="The Lighthearted Philosophers' Society" class="logo__icon">
+      </a>
+
+      <nav class="nav" role="navigation" aria-label="Main navigation">
+        <button class="nav-toggle" aria-expanded="false" aria-controls="nav-list" aria-label="Toggle navigation menu">
+          <span class="nav-toggle__bar"></span>
+          <span class="nav-toggle__bar"></span>
+          <span class="nav-toggle__bar"></span>
+        </button>
+
+        <ul class="nav__list" id="nav-list">
+          <li><a href="index.html" class="nav__link">Home</a></li>
+          <li><a href="about.html" class="nav__link">About</a></li>
+          <li class="nav__item--dropdown">
+            <a href="upcoming-conferences.html" class="nav__link nav__link--active">Conferences</a>
+            <ul class="nav__dropdown">
+              <li><a href="upcoming-conferences.html" class="nav__dropdown-link">Upcoming Conferences</a></li>
+              <li><a href="past-conferences.html" class="nav__dropdown-link">Past Conferences</a></li>
+              <li><a href="venue.html" class="nav__dropdown-link">Venue Information</a></li>
+            </ul>
+          </li>
+          <li><a href="membership.html" class="nav__link">Membership</a></li>
+          <li><a href="resources.html" class="nav__link">Resources</a></li>
+          <li><a href="publications.html" class="nav__link">Publications</a></li>
+          <li><a href="news.html" class="nav__link">News</a></li>
+          <li><a href="contact.html" class="nav__link">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main id="main-content">
+    <!-- Page Hero -->
+    <section class="hero" style="min-height: 40vh;">
+      <div class="hero__bg" aria-hidden="true"></div>
+      <div class="hero__content">
+        <h1 class="hero__title">Venue Information</h1>
+        <p class="hero__subtitle">
+          Details about our conference locations and accommodations
+        </p>
+      </div>
+    </section>
+
+    <!-- Current Venue -->
+    <section class="section">
+      <div class="container">
+        <h2 class="text-center mb-2xl">Upcoming Conference Venue</h2>
+        <div class="card" style="max-width: 800px; margin: 0 auto; padding: var(--space-2xl);">
+          <div class="text-center mb-xl">
+            <svg width="80" height="80" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" style="color: var(--color-primary);">
+              <circle cx="40" cy="32" r="12" stroke="currentColor" stroke-width="3"/>
+              <path d="M40 8c-13.3 0-24 10.7-24 24 0 18 24 40 24 40s24-22 24-40c0-13.3-10.7-24-24-24z" stroke="currentColor" stroke-width="3"/>
+            </svg>
+          </div>
+          <h3 class="text-center">To Be Announced</h3>
+          <p class="text-center text-muted mb-lg">20th Annual Conference - 2026</p>
+          <p class="text-center">
+            The venue for our 20th Annual Conference will be announced soon.
+            Check back for details about the location, accommodations, and travel information.
+          </p>
+          <div class="text-center mt-xl">
+            <a href="contact.html" class="btn btn--primary">Get Notified</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Past Venues -->
+    <section class="section section--gray">
+      <div class="container">
+        <h2 class="text-center mb-2xl">Recent Conference Venues</h2>
+        <div class="grid grid--2">
+
+          <!-- Intercontinental Hotel, New Orleans -->
+          <div class="card" style="padding: var(--space-xl);">
+            <h3>Intercontinental Hotel</h3>
+            <p class="text-muted mb-md">19th Annual Conference (2025)</p>
+            <p>
+              <strong>Address:</strong><br>
+              444 St. Charles Avenue<br>
+              New Orleans, LA 70130
+            </p>
+            <p class="mt-md">
+              Our 19th Annual Conference featured an Author Meets Critics session on
+              Wilk and Gimbel's <em>In On the Joke: The Ethics of Humor and Comedy</em>,
+              with lively discussions in the heart of New Orleans.
+            </p>
+          </div>
+
+          <!-- Florida Institute of Technology -->
+          <div class="card" style="padding: var(--space-xl);">
+            <h3>Florida Institute of Technology</h3>
+            <p class="text-muted mb-md">18th Annual Conference (2024)</p>
+            <p>
+              <strong>Address:</strong><br>
+              Crawford Building, 7th Floor<br>
+              150 W. University Blvd.<br>
+              Melbourne, FL 32901
+            </p>
+            <p class="mt-md">
+              Located on Florida's Space Coast, Florida Tech offered a modern academic
+              setting with excellent facilities for our presentations and discussions.
+            </p>
+          </div>
+
+          <!-- The Menger Hotel -->
+          <div class="card" style="padding: var(--space-xl);">
+            <h3>The Menger Hotel</h3>
+            <p class="text-muted mb-md">13th Annual Conference (2019)</p>
+            <p>
+              <strong>Address:</strong><br>
+              204 Alamo Plaza<br>
+              San Antonio, TX 78205
+            </p>
+            <p class="mt-md">
+              A historic hotel adjacent to the Alamo, the Menger provided a unique
+              and memorable setting for our conference with its Victorian elegance.
+            </p>
+          </div>
+
+          <!-- Dolphin Beach Resort -->
+          <div class="card" style="padding: var(--space-xl);">
+            <h3>Dolphin Beach Resort</h3>
+            <p class="text-muted mb-md">11th Annual Conference (2017)</p>
+            <p>
+              <strong>Address:</strong><br>
+              Saint Petersburg, FL 33706
+            </p>
+            <p class="mt-md">
+              A return to our Florida roots! The beachside location provided a
+              relaxed atmosphere perfect for lighthearted philosophical discussions.
+            </p>
+          </div>
+
+          <!-- NC A&T (Online) -->
+          <div class="card" style="padding: var(--space-xl);">
+            <h3>Online Conference</h3>
+            <p class="text-muted mb-md">15th Annual Conference (2021)</p>
+            <p>
+              <strong>Hosted by:</strong><br>
+              North Carolina Agricultural and Technical State University<br>
+              Greensboro, NC
+            </p>
+            <p class="mt-md">
+              During the pandemic, we successfully transitioned to a virtual format,
+              demonstrating that philosophical humor transcends physical boundaries.
+            </p>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- Travel Tips -->
+    <section class="section">
+      <div class="container container--narrow">
+        <h2 class="text-center mb-2xl">Conference Travel Tips</h2>
+
+        <div class="card mb-lg" style="padding: var(--space-xl);">
+          <h3>Planning Your Trip</h3>
+          <ul style="margin-left: var(--space-xl);">
+            <li>Book accommodations early, especially for venues in popular areas</li>
+            <li>Check if the conference hotel offers special rates for attendees</li>
+            <li>Consider arriving a day early to adjust and explore the area</li>
+            <li>Keep conference organizer contact information handy</li>
+          </ul>
+        </div>
+
+        <div class="card mb-lg" style="padding: var(--space-xl);">
+          <h3>At the Conference</h3>
+          <ul style="margin-left: var(--space-xl);">
+            <li>Registration typically opens the morning of the first day</li>
+            <li>Bring business cards to exchange with fellow scholars</li>
+            <li>Don't miss the social events&mdash;they're often the highlight!</li>
+            <li>Consider volunteering as a heckler (commentator) for sessions</li>
+          </ul>
+        </div>
+
+        <div class="card" style="padding: var(--space-xl);">
+          <h3>Questions?</h3>
+          <p>
+            For specific questions about venue accessibility, nearby accommodations,
+            or travel arrangements, please contact the conference organizers.
+          </p>
+          <a href="contact.html" class="btn btn--outline mt-md">Contact Us</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="section section--primary">
+      <div class="container text-center">
+        <h2>Ready to Join Us?</h2>
+        <p class="hero__subtitle">
+          We'd love to see you at our next conference. Register early to secure your spot!
+        </p>
+        <div class="flex justify-center gap-md flex-wrap">
+          <a href="upcoming-conferences.html" class="btn btn--secondary btn--lg">View Upcoming Conference</a>
+          <a href="past-conferences.html" class="btn btn--outline-white btn--lg">Past Conferences</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer" role="contentinfo">
+    <div class="container">
+      <div class="footer__grid">
+        <div>
+          <h3 class="footer__title">Lighthearted Philosophers' Society</h3>
+          <p>An organization for philosophers who approach their work with a sense of humor.</p>
+        </div>
+
+        <div>
+          <h3 class="footer__title">Quick Links</h3>
+          <ul class="footer__list">
+            <li><a href="about.html" class="footer__link">About Us</a></li>
+            <li><a href="upcoming-conferences.html" class="footer__link">Conferences</a></li>
+            <li><a href="membership.html" class="footer__link">Membership</a></li>
+            <li><a href="resources.html" class="footer__link">Resources</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h3 class="footer__title">Conference</h3>
+          <ul class="footer__list">
+            <li><a href="upcoming-conferences.html" class="footer__link">Upcoming Events</a></li>
+            <li><a href="past-conferences.html" class="footer__link">Past Conferences</a></li>
+            <li><a href="venue.html" class="footer__link">Venue Info</a></li>
+            <li><a href="publications.html" class="footer__link">Publications</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h3 class="footer__title">Contact</h3>
+          <ul class="footer__list">
+            <li><a href="mailto:lighthearted.philosophers@gmail.com" class="footer__link">lighthearted.philosophers@gmail.com</a></li>
+            <li><a href="contact.html" class="footer__link">Contact Form</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer__bottom">
+        <p class="footer__copyright">
+          &copy; <span id="year"></span> Lighthearted Philosophers' Society. All rights reserved.
+        </p>
+        <div class="footer__social">
+          <a href="#" class="footer__social-link" aria-label="Follow us on Twitter">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+            </svg>
+          </a>
+          <a href="#" class="footer__social-link" aria-label="Follow us on Facebook">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- JavaScript -->
+  <script src="js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Contact the Lighthearted Philosophers' Society. Get in touch with questions about membership, conferences, or submissions.">
+  <title>Contact | Lighthearted Philosophers' Society</title>
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="css/style.css">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="LPS_Logo.png">
+</head>
+<body>
+  <!-- Skip Link for Accessibility -->
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <!-- Header -->
+  <header class="header" role="banner">
+    <div class="header__inner">
+      <a href="index.html" class="logo" aria-label="Lighthearted Philosophers' Society Home">
+        <img src="LPS_Logo.png" alt="The Lighthearted Philosophers' Society" class="logo__icon">
+      </a>
+
+      <nav class="nav" role="navigation" aria-label="Main navigation">
+        <button class="nav-toggle" aria-expanded="false" aria-controls="nav-list" aria-label="Toggle navigation menu">
+          <span class="nav-toggle__bar"></span>
+          <span class="nav-toggle__bar"></span>
+          <span class="nav-toggle__bar"></span>
+        </button>
+
+        <ul class="nav__list" id="nav-list">
+          <li><a href="index.html" class="nav__link">Home</a></li>
+          <li><a href="about.html" class="nav__link">About</a></li>
+          <li class="nav__item--dropdown">
+            <a href="upcoming-conferences.html" class="nav__link">Conferences</a>
+            <ul class="nav__dropdown">
+              <li><a href="upcoming-conferences.html" class="nav__dropdown-link">Upcoming Conferences</a></li>
+              <li><a href="past-conferences.html" class="nav__dropdown-link">Past Conferences</a></li>
+              <li><a href="venue.html" class="nav__dropdown-link">Venue Information</a></li>
+            </ul>
+          </li>
+          <li><a href="membership.html" class="nav__link">Membership</a></li>
+          <li><a href="resources.html" class="nav__link">Resources</a></li>
+          <li><a href="publications.html" class="nav__link">Publications</a></li>
+          <li><a href="news.html" class="nav__link">News</a></li>
+          <li><a href="contact.html" class="nav__link nav__link--active">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main id="main-content">
+    <!-- Page Hero -->
+    <section class="hero" style="min-height: 40vh;">
+      <div class="hero__bg" aria-hidden="true"></div>
+      <div class="hero__content">
+        <h1 class="hero__title">Contact Us</h1>
+        <p class="hero__subtitle">
+          We'd love to hear from you. Reach out with questions, ideas, or just to say hello.
+        </p>
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="section">
+      <div class="container">
+        <div class="contact-grid">
+          <!-- Contact Form -->
+          <div>
+            <h2 class="mb-lg">Send Us a Message</h2>
+            <form class="contact-form" action="#" method="post">
+              <div class="form-group">
+                <label for="name" class="form-label">Your Name <span aria-hidden="true">*</span></label>
+                <input type="text" id="name" name="name" class="form-input" required aria-required="true">
+              </div>
+
+              <div class="form-group">
+                <label for="email" class="form-label">Email Address <span aria-hidden="true">*</span></label>
+                <input type="email" id="email" name="email" class="form-input" required aria-required="true">
+              </div>
+
+              <div class="form-group">
+                <label for="subject" class="form-label">Subject</label>
+                <select id="subject" name="subject" class="form-select">
+                  <option value="">Select a topic...</option>
+                  <option value="membership">Membership Inquiry</option>
+                  <option value="conference">Conference Information</option>
+                  <option value="submission">Paper Submission</option>
+                  <option value="heckler">Volunteer as Heckler</option>
+                  <option value="other">Other</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label for="message" class="form-label">Message <span aria-hidden="true">*</span></label>
+                <textarea id="message" name="message" class="form-textarea" rows="6" required aria-required="true"></textarea>
+              </div>
+
+              <button type="submit" class="btn btn--primary btn--lg">Send Message</button>
+
+              <p class="text-muted mt-md" style="font-size: var(--text-sm);">
+                <span aria-hidden="true">*</span> Required fields
+              </p>
+            </form>
+          </div>
+
+          <!-- Contact Information -->
+          <div>
+            <h2 class="mb-lg">Get in Touch</h2>
+
+            <div class="contact-info__item">
+              <svg class="contact-info__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                <polyline points="22,6 12,13 2,6"/>
+              </svg>
+              <div>
+                <h3 style="font-size: var(--text-lg); margin-bottom: var(--space-xs);">Email</h3>
+                <a href="mailto:lighthearted.philosophers@gmail.com">lighthearted.philosophers@gmail.com</a>
+                <p class="text-muted mt-sm">We typically respond within 2-3 business days.</p>
+              </div>
+            </div>
+
+            <div class="contact-info__item">
+              <svg class="contact-info__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+                <circle cx="12" cy="10" r="3"/>
+              </svg>
+              <div>
+                <h3 style="font-size: var(--text-lg); margin-bottom: var(--space-xs);">Membership Inquiries</h3>
+                <p>Thomas Wilk<br>
+                Widener University<br>
+                Department of Philosophy</p>
+              </div>
+            </div>
+
+            <div class="card mt-xl" style="padding: var(--space-xl); background: var(--color-off-white);">
+              <h3>Frequently Asked Questions</h3>
+              <ul style="margin-left: var(--space-lg); margin-top: var(--space-md);">
+                <li class="mb-sm">
+                  <strong>How do I submit a paper?</strong><br>
+                  <span class="text-muted">Check our <a href="upcoming-conferences.html">upcoming conferences</a> page for submission details.</span>
+                </li>
+                <li class="mb-sm">
+                  <strong>How do I become a member?</strong><br>
+                  <span class="text-muted">Visit our <a href="membership.html">membership</a> page for options.</span>
+                </li>
+                <li class="mb-sm">
+                  <strong>Can I volunteer as a heckler?</strong><br>
+                  <span class="text-muted">Yes! Email us with your areas of specialization.</span>
+                </li>
+                <li>
+                  <strong>Are undergraduates welcome?</strong><br>
+                  <span class="text-muted">Absolutely! We have a dedicated undergraduate track.</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Social & Community -->
+    <section class="section section--gray">
+      <div class="container text-center">
+        <h2 class="mb-lg">Join Our Community</h2>
+        <p class="text-muted mb-xl" style="max-width: 600px; margin-left: auto; margin-right: auto;">
+          Connect with us on social media and stay updated on conferences,
+          calls for papers, and society news.
+        </p>
+        <div class="flex justify-center gap-lg">
+          <a href="#" class="footer__social-link" aria-label="Follow us on Twitter" style="width: 56px; height: 56px;">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+            </svg>
+          </a>
+          <a href="#" class="footer__social-link" aria-label="Follow us on Facebook" style="width: 56px; height: 56px;">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="section section--primary">
+      <div class="container text-center">
+        <h2>Ready to Get Involved?</h2>
+        <p class="hero__subtitle">
+          Whether you want to present, attend, or just learn more about philosophy of humor,
+          we're here to help.
+        </p>
+        <div class="flex justify-center gap-md flex-wrap">
+          <a href="upcoming-conferences.html" class="btn btn--secondary btn--lg">View Conferences</a>
+          <a href="membership.html" class="btn btn--outline-white btn--lg">Join the Society</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer" role="contentinfo">
+    <div class="container">
+      <div class="footer__grid">
+        <div>
+          <h3 class="footer__title">Lighthearted Philosophers' Society</h3>
+          <p>An organization for philosophers who approach their work with a sense of humor.</p>
+        </div>
+
+        <div>
+          <h3 class="footer__title">Quick Links</h3>
+          <ul class="footer__list">
+            <li><a href="about.html" class="footer__link">About Us</a></li>
+            <li><a href="upcoming-conferences.html" class="footer__link">Conferences</a></li>
+            <li><a href="membership.html" class="footer__link">Membership</a></li>
+            <li><a href="resources.html" class="footer__link">Resources</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h3 class="footer__title">Conference</h3>
+          <ul class="footer__list">
+            <li><a href="upcoming-conferences.html" class="footer__link">Upcoming Events</a></li>
+            <li><a href="past-conferences.html" class="footer__link">Past Conferences</a></li>
+            <li><a href="venue.html" class="footer__link">Venue Info</a></li>
+            <li><a href="publications.html" class="footer__link">Publications</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h3 class="footer__title">Contact</h3>
+          <ul class="footer__list">
+            <li><a href="mailto:lighthearted.philosophers@gmail.com" class="footer__link">lighthearted.philosophers@gmail.com</a></li>
+            <li><a href="contact.html" class="footer__link">Contact Form</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer__bottom">
+        <p class="footer__copyright">
+          &copy; <span id="year"></span> Lighthearted Philosophers' Society. All rights reserved.
+        </p>
+        <div class="footer__social">
+          <a href="#" class="footer__social-link" aria-label="Follow us on Twitter">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+            </svg>
+          </a>
+          <a href="#" class="footer__social-link" aria-label="Follow us on Facebook">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- JavaScript -->
+  <script src="js/main.js"></script>
+</body>
+</html>
