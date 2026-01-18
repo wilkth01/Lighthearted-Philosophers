@@ -312,7 +312,7 @@ strong, b {
 
 .logo__icon {
   width: auto;
-  height: 65px;
+  height: 80px;
   object-fit: contain;
 }
 
@@ -1118,6 +1118,302 @@ strong, b {
   width: 24px;
   height: 24px;
   color: var(--color-primary);
+}
+
+/* ============================================
+   Easter Eggs
+   ============================================ */
+
+/* Konami Code - Dancing Socrates */
+.socrates-dance {
+  animation: socrates-spin 0.5s ease-in-out infinite;
+}
+
+@keyframes socrates-spin {
+  0%, 100% { transform: rotate(0deg) scale(1); }
+  25% { transform: rotate(5deg) scale(1.02); }
+  75% { transform: rotate(-5deg) scale(1.02); }
+}
+
+/* Floating Socrates heads */
+.floating-socrates {
+  position: fixed;
+  top: -150px;
+  width: 100px;
+  height: auto;
+  z-index: 9999;
+  pointer-events: none;
+  animation: socrates-fall linear forwards;
+}
+
+@keyframes socrates-fall {
+  0% {
+    top: -150px;
+    transform: rotate(0deg);
+  }
+  100% {
+    top: 110vh;
+    transform: rotate(720deg);
+  }
+}
+
+/* Easter Egg Modal */
+.easter-egg-modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(13, 11, 18, 0.8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10001;
+  padding: var(--space-lg);
+  animation: modal-fade-in 0.3s ease;
+}
+
+@keyframes modal-fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.easter-egg-modal__content {
+  background: var(--color-white);
+  padding: var(--space-2xl);
+  border-radius: var(--radius-lg);
+  max-width: 500px;
+  text-align: center;
+  box-shadow: var(--shadow-xl);
+  animation: modal-pop-in 0.3s ease;
+}
+
+@keyframes modal-pop-in {
+  from {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.easter-egg-modal__content h3 {
+  font-size: var(--text-2xl);
+  color: var(--color-primary);
+  margin-bottom: var(--space-lg);
+}
+
+.easter-egg-modal__content p {
+  font-size: var(--text-lg);
+  color: var(--color-gray-600);
+  margin-bottom: var(--space-xl);
+  font-style: italic;
+}
+
+/* Geocities Button */
+.geocities-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-sm);
+  padding: var(--space-xs) var(--space-md);
+  font-size: var(--text-sm);
+  color: var(--color-gray-400);
+  background: var(--color-gray-700);
+  border: 1px dashed var(--color-gray-600);
+  border-radius: var(--radius-sm);
+  text-decoration: none;
+  transition: all var(--transition-fast);
+  cursor: pointer;
+}
+
+.geocities-btn:hover {
+  color: var(--color-secondary);
+  border-color: var(--color-secondary);
+  background: var(--color-gray-800);
+}
+
+/* Geocities Mode Styles */
+.geocities-mode {
+  background: #000080 !important;
+  cursor: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32"><text y="24" font-size="24">🏛️</text></svg>'), auto;
+}
+
+.geocities-mode * {
+  font-family: 'Comic Sans MS', 'Chalkboard SE', 'Comic Neue', cursive !important;
+}
+
+.geocities-mode .header {
+  background: linear-gradient(90deg, #ff00ff, #00ffff, #ffff00, #ff00ff) !important;
+  background-size: 400% 100% !important;
+  animation: geocities-rainbow 3s linear infinite !important;
+}
+
+.geocities-mode .nav__link,
+.geocities-mode .logo {
+  color: #000 !important;
+  text-shadow: 1px 1px #fff !important;
+}
+
+.geocities-mode .hero {
+  background: #000080 !important;
+}
+
+.geocities-mode .hero__bg {
+  opacity: 0.3 !important;
+  animation: none !important;
+}
+
+.geocities-mode .hero__title {
+  color: #ffff00 !important;
+  text-shadow: 2px 2px #ff0000, -2px -2px #00ff00 !important;
+  animation: geocities-blink 0.5s step-end infinite !important;
+}
+
+.geocities-mode .hero__subtitle {
+  color: #00ffff !important;
+}
+
+.geocities-mode .section {
+  background: #000080 !important;
+  border-top: 3px dashed #ffff00 !important;
+  border-bottom: 3px dashed #ff00ff !important;
+}
+
+.geocities-mode .section--gray,
+.geocities-mode .section--off-white {
+  background: #008080 !important;
+}
+
+.geocities-mode .section--primary {
+  background: linear-gradient(45deg, #ff0000, #ff00ff) !important;
+}
+
+.geocities-mode .card {
+  background: #c0c0c0 !important;
+  border: 3px outset #ffffff !important;
+  box-shadow: none !important;
+  border-radius: 0 !important;
+}
+
+.geocities-mode .card:hover {
+  transform: none !important;
+}
+
+.geocities-mode h1,
+.geocities-mode h2,
+.geocities-mode h3,
+.geocities-mode h4 {
+  color: #ffff00 !important;
+  text-shadow: 2px 2px #000 !important;
+}
+
+.geocities-mode p,
+.geocities-mode li,
+.geocities-mode .card__text,
+.geocities-mode .text-muted {
+  color: #ffffff !important;
+}
+
+.geocities-mode .card p,
+.geocities-mode .card li,
+.geocities-mode .card h3 {
+  color: #000000 !important;
+  text-shadow: none !important;
+}
+
+.geocities-mode .btn {
+  background: #c0c0c0 !important;
+  color: #000 !important;
+  border: 3px outset #fff !important;
+  border-radius: 0 !important;
+  text-shadow: none !important;
+}
+
+.geocities-mode .btn:hover {
+  border-style: inset !important;
+}
+
+.geocities-mode .footer {
+  background: #000000 !important;
+  border-top: 5px solid #ff00ff !important;
+}
+
+.geocities-mode .footer__title {
+  color: #00ff00 !important;
+}
+
+.geocities-mode a {
+  color: #00ffff !important;
+}
+
+.geocities-mode .card a {
+  color: #0000ff !important;
+}
+
+@keyframes geocities-rainbow {
+  0% { background-position: 0% 50%; }
+  100% { background-position: 400% 50%; }
+}
+
+@keyframes geocities-blink {
+  50% { opacity: 0; }
+}
+
+/* Geocities Counter Banner */
+.geocities-counter {
+  background: #ffff00;
+  color: #000;
+  text-align: center;
+  padding: 20px;
+  border-bottom: 5px solid #ff0000;
+  font-family: 'Comic Sans MS', cursive !important;
+}
+
+.geocities-counter img {
+  max-height: 50px;
+  margin-bottom: 10px;
+}
+
+.geocities-counter marquee {
+  color: #ff0000;
+  font-weight: bold;
+  font-size: 1.2em;
+}
+
+.geocities-counter p {
+  margin: 5px 0;
+  color: #000080;
+}
+
+/* Blink animation for Geocities */
+@keyframes blink {
+  50% { opacity: 0; }
+}
+
+.geocities-mode blink,
+blink {
+  animation: blink 1s step-end infinite;
+}
+
+/* Cursor trail stars */
+.cursor-trail {
+  position: absolute;
+  pointer-events: none;
+  font-size: 20px;
+  color: #ffff00;
+  text-shadow: 0 0 5px #ff00ff;
+  animation: cursor-trail-fade 1s forwards;
+  z-index: 10000;
+}
+
+@keyframes cursor-trail-fade {
+  0% {
+    opacity: 1;
+    transform: scale(1) rotate(0deg);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(0) rotate(180deg);
+  }
 }
 
 /* Print Styles */

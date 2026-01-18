@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Page not found - Lighthearted Philosophers' Society">
+  <title>404 - Page Not Found | Lighthearted Philosophers' Society</title>
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="css/style.css">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="LPS_Logo.png">
+
+  <style>
+    .error-page {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
+      color: var(--color-white);
+      text-align: center;
+      padding: var(--space-xl);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .error-page__bg {
+      position: absolute;
+      inset: 0;
+      opacity: 0.08;
+      background-image: url("images/socrates.png");
+      background-repeat: repeat;
+      background-size: 200px 200px;
+      filter: saturate(0) contrast(0.95);
+    }
+
+    .error-page__content {
+      position: relative;
+      z-index: 1;
+      max-width: 600px;
+    }
+
+    .error-page__code {
+      font-size: clamp(6rem, 20vw, 12rem);
+      font-family: var(--font-heading);
+      font-weight: 700;
+      line-height: 1;
+      margin-bottom: var(--space-lg);
+      text-shadow: 4px 4px 0 rgba(0,0,0,0.2);
+    }
+
+    .error-page__title {
+      font-size: var(--text-3xl);
+      margin-bottom: var(--space-lg);
+      color: var(--color-white);
+    }
+
+    .error-page__message {
+      font-size: var(--text-xl);
+      opacity: 0.9;
+      margin-bottom: var(--space-md);
+    }
+
+    .error-page__quote {
+      font-style: italic;
+      opacity: 0.8;
+      margin-bottom: var(--space-2xl);
+      padding: var(--space-lg);
+      border-left: 4px solid var(--color-secondary);
+      text-align: left;
+      background: rgba(255,255,255,0.1);
+      border-radius: 0 var(--radius-md) var(--radius-md) 0;
+    }
+
+    .error-page__quote cite {
+      display: block;
+      margin-top: var(--space-sm);
+      font-style: normal;
+      opacity: 0.7;
+    }
+
+    .error-page__actions {
+      display: flex;
+      gap: var(--space-md);
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .hemlock-btn {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hemlock-btn:hover::after {
+      content: '(just kidding)';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: var(--text-xs);
+      white-space: nowrap;
+    }
+  </style>
+</head>
+<body>
+  <main class="error-page">
+    <div class="error-page__bg" aria-hidden="true"></div>
+    <div class="error-page__content">
+      <div class="error-page__code">404</div>
+      <h1 class="error-page__title">This Page Has Gone the Way of Socrates</h1>
+      <p class="error-page__message">
+        The page you seek does not exist&mdash;or perhaps it never did.
+      </p>
+      <blockquote class="error-page__quote">
+        "I know that I know nothing... especially not where this page went."
+        <cite>&mdash; Socrates (probably)</cite>
+      </blockquote>
+      <p class="error-page__message" style="font-size: var(--text-base); opacity: 0.7;">
+        Descartes thought this page existed, but he was wrong.<br>
+        Hume would say you can't prove it ever existed at all.
+      </p>
+      <div class="error-page__actions">
+        <a href="index.html" class="btn btn--secondary btn--lg">Return to Reality</a>
+        <a href="contact.html" class="btn btn--outline-white btn--lg hemlock-btn">Drink Hemlock</a>
+      </div>
+    </div>
+  </main>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
