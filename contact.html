@@ -71,99 +71,41 @@
 
     <!-- Contact Section -->
     <section class="section">
-      <div class="container">
-        <div class="contact-grid">
-          <!-- Contact Form -->
-          <div>
-            <h2 class="mb-lg">Send Us a Message</h2>
-            <form class="contact-form" action="#" method="post">
-              <div class="form-group">
-                <label for="name" class="form-label">Your Name <span aria-hidden="true">*</span></label>
-                <input type="text" id="name" name="name" class="form-input" required aria-required="true">
-              </div>
+      <div class="container container--narrow">
 
-              <div class="form-group">
-                <label for="email" class="form-label">Email Address <span aria-hidden="true">*</span></label>
-                <input type="email" id="email" name="email" class="form-input" required aria-required="true">
-              </div>
-
-              <div class="form-group">
-                <label for="subject" class="form-label">Subject</label>
-                <select id="subject" name="subject" class="form-select">
-                  <option value="">Select a topic...</option>
-                  <option value="membership">Membership Inquiry</option>
-                  <option value="conference">Conference Information</option>
-                  <option value="submission">Paper Submission</option>
-                  <option value="heckler">Volunteer as Heckler</option>
-                  <option value="other">Other</option>
-                </select>
-              </div>
-
-              <div class="form-group">
-                <label for="message" class="form-label">Message <span aria-hidden="true">*</span></label>
-                <textarea id="message" name="message" class="form-textarea" rows="6" required aria-required="true"></textarea>
-              </div>
-
-              <button type="submit" class="btn btn--primary btn--lg">Send Message</button>
-
-              <p class="text-muted mt-md" style="font-size: var(--text-sm);">
-                <span aria-hidden="true">*</span> Required fields
-              </p>
-            </form>
-          </div>
-
-          <!-- Contact Information -->
-          <div>
-            <h2 class="mb-lg">Get in Touch</h2>
-
-            <div class="contact-info__item">
-              <svg class="contact-info__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
-                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
-                <polyline points="22,6 12,13 2,6"/>
-              </svg>
-              <div>
-                <h3 style="font-size: var(--text-lg); margin-bottom: var(--space-xs);">Email</h3>
-                <a href="mailto:lighthearted.philosophers@gmail.com">lighthearted.philosophers@gmail.com</a>
-                <p class="text-muted mt-sm">We typically respond within 2-3 business days.</p>
-              </div>
-            </div>
-
-            <div class="contact-info__item">
-              <svg class="contact-info__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
-                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
-                <circle cx="12" cy="10" r="3"/>
-              </svg>
-              <div>
-                <h3 style="font-size: var(--text-lg); margin-bottom: var(--space-xs);">Membership Inquiries</h3>
-                <p>Thomas Wilk<br>
-                Widener University<br>
-                Department of Philosophy</p>
-              </div>
-            </div>
-
-            <div class="card mt-xl" style="padding: var(--space-xl); background: var(--color-off-white);">
-              <h3>Frequently Asked Questions</h3>
-              <ul style="margin-left: var(--space-lg); margin-top: var(--space-md);">
-                <li class="mb-sm">
-                  <strong>How do I submit a paper?</strong><br>
-                  <span class="text-muted">Check our <a href="upcoming-conferences.html">upcoming conferences</a> page for submission details.</span>
-                </li>
-                <li class="mb-sm">
-                  <strong>How do I become a member?</strong><br>
-                  <span class="text-muted">Visit our <a href="membership.html">membership</a> page for options.</span>
-                </li>
-                <li class="mb-sm">
-                  <strong>Can I volunteer as a heckler?</strong><br>
-                  <span class="text-muted">Yes! Email us with your areas of specialization.</span>
-                </li>
-                <li>
-                  <strong>Are undergraduates welcome?</strong><br>
-                  <span class="text-muted">Absolutely! We have a dedicated undergraduate track.</span>
-                </li>
-              </ul>
-            </div>
-          </div>
+        <div class="card" style="padding: var(--space-2xl); text-align: center; margin-bottom: var(--space-xl);">
+          <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true" style="color: var(--color-primary); margin-bottom: var(--space-md);">
+            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+            <polyline points="22,6 12,13 2,6"/>
+          </svg>
+          <h2 style="margin-bottom: var(--space-sm);">Get in Touch</h2>
+          <p class="text-muted" style="margin-bottom: var(--space-lg);">For conference inquiries, membership questions, or anything else, email us directly.</p>
+          <a href="mailto:lighthearted.philosophers@gmail.com" class="btn btn--primary btn--lg">lighthearted.philosophers@gmail.com</a>
+          <p class="text-muted mt-lg" style="font-size: var(--text-sm);">We typically respond within 2&ndash;3 business days.</p>
         </div>
+
+        <div class="card" style="padding: var(--space-xl); background: var(--color-off-white);">
+          <h3>Frequently Asked Questions</h3>
+          <ul style="margin-left: var(--space-lg); margin-top: var(--space-md);">
+            <li class="mb-sm">
+              <strong>How do I submit a paper?</strong><br>
+              <span class="text-muted">Check our <a href="upcoming-conferences.html">upcoming conferences</a> page for submission details.</span>
+            </li>
+            <li class="mb-sm">
+              <strong>How do I become a member?</strong><br>
+              <span class="text-muted">Visit our <a href="membership.html">membership</a> page for options.</span>
+            </li>
+            <li class="mb-sm">
+              <strong>Can I volunteer as a heckler?</strong><br>
+              <span class="text-muted">Yes! Email us with your areas of specialization.</span>
+            </li>
+            <li>
+              <strong>Are undergraduates welcome?</strong><br>
+              <span class="text-muted">Absolutely! We have a dedicated undergraduate track.</span>
+            </li>
+          </ul>
+        </div>
+
       </div>
     </section>
 
