@@ -3,8 +3,17 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Join the Lighthearted Philosophers' Society. Membership information, benefits, and how to become a part of our community.">
+  <meta name="description" content="Join the Lighthearted Philosophers' Society. Membership levels, benefits, and how to join.">
   <title>Membership | Lighthearted Philosophers' Society</title>
+
+  <!--
+    ============================================================
+    REBUILT membership page — information only, no payment.
+    All payment happens on join.html so the membership form and
+    the dues payment can't disagree. Do not add PayPal buttons
+    back to this page.
+    ============================================================
+  -->
 
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -16,6 +25,101 @@
 
   <!-- Favicon -->
   <link rel="icon" type="image/png" href="LPS_Logo.png">
+
+  <!-- Page styles: tier list, benefits grid, and asides only.
+       Base type, colors, buttons, and links come from css/style.css.
+       These tokens are shared with join.html — keep the two in sync. -->
+  <style>
+    .lps-membership .cta-block {
+      border-top: 1px solid var(--color-gray-200);
+      border-bottom: 1px solid var(--color-gray-200);
+      padding: var(--space-xl) 0;
+      margin-bottom: var(--space-md);
+      text-align: center;
+    }
+    .lps-membership .cta-note {
+      font-size: var(--text-sm);
+      color: var(--color-gray-500);
+      margin: var(--space-md) 0 0;
+    }
+
+    /* Tier list */
+    .lps-membership .tiers {
+      margin-top: var(--space-lg);
+      border-top: 1px solid var(--color-gray-200);
+    }
+    .lps-membership .tier {
+      display: flex;
+      gap: var(--space-lg);
+      align-items: baseline;
+      padding: var(--space-md) var(--space-xs);
+      border-bottom: 1px solid var(--color-gray-200);
+    }
+    .lps-membership .tier .price {
+      flex: 0 0 4.5rem;
+      font-weight: 700;
+      color: var(--color-primary);
+    }
+    .lps-membership .tier .name {
+      font-weight: 600;
+      color: var(--color-gray-800);
+      display: block;
+    }
+    .lps-membership .tier .who {
+      color: var(--color-gray-500);
+      font-size: var(--text-sm);
+    }
+
+    /* Benefits grid */
+    .lps-membership .benefits {
+      list-style: none;
+      padding: 0;
+      margin-top: var(--space-lg);
+      display: grid;
+      gap: var(--space-lg) var(--space-xl);
+      grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+    }
+    .lps-membership .benefits li {
+      border-top: 3px solid var(--color-secondary);
+      padding-top: var(--space-sm);
+    }
+    .lps-membership .benefits h3 {
+      font-size: var(--text-lg);
+      margin-bottom: var(--space-xs);
+    }
+    .lps-membership .benefits p {
+      font-size: var(--text-sm);
+      color: var(--color-gray-500);
+      margin: 0;
+    }
+
+    .lps-membership .aside {
+      background: var(--color-off-white);
+      border-left: 4px solid var(--color-secondary);
+      border-radius: var(--radius-sm);
+      padding: var(--space-lg);
+      margin-top: var(--space-lg);
+      font-size: var(--text-sm);
+      color: var(--color-gray-600);
+    }
+    .lps-membership .aside p:last-child { margin-bottom: 0; }
+
+    /* Geocities Mode participation — keep these components legible when
+       js/main.js toggles .geocities-mode on <body>. */
+    .geocities-mode .lps-membership .tier .name,
+    .geocities-mode .lps-membership .tier .who { color: #fff !important; }
+    .geocities-mode .lps-membership .tier .price { color: #ffff00 !important; }
+    .geocities-mode .lps-membership .benefits li { border-top-color: #ffff00 !important; }
+    .geocities-mode .lps-membership .aside {
+      background: #c0c0c0 !important;
+      border: 3px outset #fff !important;
+      border-radius: 0 !important;
+    }
+    .geocities-mode .lps-membership .aside,
+    .geocities-mode .lps-membership .aside p,
+    .geocities-mode .lps-membership .aside strong { color: #000 !important; text-shadow: none !important; }
+    .geocities-mode .lps-membership .aside a { color: #0000ff !important; }
+  </style>
 </head>
 <body>
   <!-- Skip Link for Accessibility -->
@@ -64,287 +168,109 @@
       <div class="hero__content">
         <h1 class="hero__title">Membership</h1>
         <p class="hero__subtitle">
-          Join our community of scholars who believe philosophy and humor go hand in hand
+          A community of scholars who think philosophy and humor belong in the same room —
+          and that taking the second one seriously improves the first
         </p>
       </div>
     </section>
 
-    <!-- Membership Options -->
+    <!-- What it costs -->
     <section class="section">
-      <div class="container">
-        <h2 class="text-center mb-2xl">Membership Options</h2>
-        <div class="grid grid--2" style="max-width: 900px; margin: 0 auto;">
+      <div class="container container--narrow lps-membership">
 
-          <!-- Conference Registration -->
-          <div class="card" style="border-top: 4px solid var(--color-primary);">
-            <div class="card__content" style="padding: var(--space-2xl);">
-              <h3 class="text-center">Conference Registration</h3>
-              <p class="text-center text-muted mb-lg">Sliding scale based on income</p>
-
-              <div style="margin-bottom: var(--space-xl);">
-                <div style="display: flex; justify-content: space-between; padding: var(--space-sm) 0; border-bottom: 1px solid var(--color-gray-200);">
-                  <span><strong>Rich</strong></span>
-                  <span style="font-weight: 700; color: var(--color-primary);">$125</span>
-                </div>
-                <p class="text-muted" style="font-size: var(--text-sm); margin: var(--space-xs) 0 var(--space-sm);">
-                  Assistant, Associate, and Full Professors
-                </p>
-                <div style="margin-bottom: var(--space-md);">
-                  <style>.pp-98N3C65YFSQGA{text-align:center;border:none;border-radius:0.25rem;min-width:11.625rem;padding:0 2rem;height:2.625rem;font-weight:bold;background-color:#FFD140;color:#000000;font-family:"Helvetica Neue",Arial,sans-serif;font-size:1rem;line-height:1.25rem;cursor:pointer;}</style>
-                  <form action="https://www.paypal.com/ncp/payment/98N3C65YFSQGA" method="post" target="_blank" style="display:inline-grid;justify-items:center;align-content:start;gap:0.5rem;">
-                    <input class="pp-98N3C65YFSQGA" type="submit" value="Pay Now" />
-                    <img src="https://www.paypalobjects.com/images/Debit_Credit_APM.svg" alt="cards" />
-                    <section style="font-size: 0.75rem;">Powered by <img src="https://www.paypalobjects.com/paypal-ui/logos/svg/paypal-wordmark-color.svg" alt="paypal" style="height:0.875rem;vertical-align:middle;"/></section>
-                  </form>
-                </div>
-
-                <div style="display: flex; justify-content: space-between; padding: var(--space-sm) 0; border-bottom: 1px solid var(--color-gray-200);">
-                  <span><strong>Poor</strong></span>
-                  <span style="font-weight: 700; color: var(--color-primary);">$75</span>
-                </div>
-                <p class="text-muted" style="font-size: var(--text-sm); margin: var(--space-xs) 0 var(--space-sm);">
-                  Contingent and adjunct faculty
-                </p>
-                <div style="margin-bottom: var(--space-md);">
-                  <style>.pp-YRFVJSHGRM5QN{text-align:center;border:none;border-radius:0.25rem;min-width:11.625rem;padding:0 2rem;height:2.625rem;font-weight:bold;background-color:#FFD140;color:#000000;font-family:"Helvetica Neue",Arial,sans-serif;font-size:1rem;line-height:1.25rem;cursor:pointer;}</style>
-                  <form action="https://www.paypal.com/ncp/payment/YRFVJSHGRM5QN" method="post" target="_blank" style="display:inline-grid;justify-items:center;align-content:start;gap:0.5rem;">
-                    <input class="pp-YRFVJSHGRM5QN" type="submit" value="Pay Now" />
-                    <img src="https://www.paypalobjects.com/images/Debit_Credit_APM.svg" alt="cards" />
-                    <section style="font-size: 0.75rem;">Powered by <img src="https://www.paypalobjects.com/paypal-ui/logos/svg/paypal-wordmark-color.svg" alt="paypal" style="height:0.875rem;vertical-align:middle;"/></section>
-                  </form>
-                </div>
-
-                <div style="display: flex; justify-content: space-between; padding: var(--space-sm) 0; border-bottom: 1px solid var(--color-gray-200);">
-                  <span><strong>Starving</strong></span>
-                  <span style="font-weight: 700; color: var(--color-primary);">$50</span>
-                </div>
-                <p class="text-muted" style="font-size: var(--text-sm); margin: var(--space-xs) 0 var(--space-sm);">
-                  Graduate students and part-time employed
-                </p>
-                <div style="margin-bottom: var(--space-md);">
-                  <style>.pp-YP4LXZ4ZAYDTJ{text-align:center;border:none;border-radius:0.25rem;min-width:11.625rem;padding:0 2rem;height:2.625rem;font-weight:bold;background-color:#FFD140;color:#000000;font-family:"Helvetica Neue",Arial,sans-serif;font-size:1rem;line-height:1.25rem;cursor:pointer;}</style>
-                  <form action="https://www.paypal.com/ncp/payment/YP4LXZ4ZAYDTJ" method="post" target="_blank" style="display:inline-grid;justify-items:center;align-content:start;gap:0.5rem;">
-                    <input class="pp-YP4LXZ4ZAYDTJ" type="submit" value="Pay Now" />
-                    <img src="https://www.paypalobjects.com/images/Debit_Credit_APM.svg" alt="cards" />
-                    <section style="font-size: 0.75rem;">Powered by <img src="https://www.paypalobjects.com/paypal-ui/logos/svg/paypal-wordmark-color.svg" alt="paypal" style="height:0.875rem;vertical-align:middle;"/></section>
-                  </form>
-                </div>
-
-                <div style="display: flex; justify-content: space-between; padding: var(--space-sm) 0; border-bottom: 1px solid var(--color-gray-200);">
-                  <span><strong>Undergrad</strong></span>
-                  <span style="font-weight: 700; color: var(--color-primary);">$10</span>
-                </div>
-                <p class="text-muted" style="font-size: var(--text-sm); margin: var(--space-xs) 0 var(--space-sm);">
-                  Undergraduate students (valid student ID required at entry)
-                </p>
-                <div style="margin-bottom: var(--space-md);">
-                  <style>.pp-7BHEHVW9Z83AA{text-align:center;border:none;border-radius:0.25rem;min-width:11.625rem;padding:0 2rem;height:2.625rem;font-weight:bold;background-color:#FFD140;color:#000000;font-family:"Helvetica Neue",Arial,sans-serif;font-size:1rem;line-height:1.25rem;cursor:pointer;}</style>
-                  <form action="https://www.paypal.com/ncp/payment/7BHEHVW9Z83AA" method="post" target="_blank" style="display:inline-grid;justify-items:center;align-content:start;gap:0.5rem;">
-                    <input class="pp-7BHEHVW9Z83AA" type="submit" value="Pay Now" />
-                    <img src="https://www.paypalobjects.com/images/Debit_Credit_APM.svg" alt="cards" />
-                    <section style="font-size: 0.75rem;">Powered by <img src="https://www.paypalobjects.com/paypal-ui/logos/svg/paypal-wordmark-color.svg" alt="paypal" style="height:0.875rem;vertical-align:middle;"/></section>
-                  </form>
-                </div>
-              </div>
-
-              <p class="text-muted text-center mb-lg" style="font-size: var(--text-sm);">
-                Conference registration automatically includes one year of membership in the LPS.
-              </p>
-
-              <a href="upcoming-conferences.html" class="btn btn--primary" style="width: 100%;">View Upcoming Conference</a>
-            </div>
-          </div>
-
-          <!-- Sustaining Member -->
-          <div class="card" style="border-top: 4px solid var(--color-secondary);">
-            <div class="card__content" style="padding: var(--space-2xl);">
-              <h3 class="text-center">Sustaining Member</h3>
-              <p class="text-center text-primary" style="font-size: var(--text-3xl); font-weight: 700; margin: var(--space-lg) 0;">
-                $50
-              </p>
-              <p class="text-center text-muted mb-lg">per year</p>
-
-              <ul style="list-style: none; margin-bottom: var(--space-xl);">
-                <li style="padding: var(--space-sm) 0; display: flex; align-items: center; gap: var(--space-sm);">
-                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--color-success)" stroke-width="3" aria-hidden="true">
-                    <polyline points="20 6 9 17 4 12"/>
-                  </svg>
-                  One year of membership
-                </li>
-                <li style="padding: var(--space-sm) 0; display: flex; align-items: center; gap: var(--space-sm);">
-                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--color-success)" stroke-width="3" aria-hidden="true">
-                    <polyline points="20 6 9 17 4 12"/>
-                  </svg>
-                  Support the Society's mission
-                </li>
-                <li style="padding: var(--space-sm) 0; display: flex; align-items: center; gap: var(--space-sm);">
-                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--color-success)" stroke-width="3" aria-hidden="true">
-                    <polyline points="20 6 9 17 4 12"/>
-                  </svg>
-                  Society updates and news
-                </li>
-                <li style="padding: var(--space-sm) 0; display: flex; align-items: center; gap: var(--space-sm);">
-                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--color-success)" stroke-width="3" aria-hidden="true">
-                    <polyline points="20 6 9 17 4 12"/>
-                  </svg>
-                  Ideal if not attending conference
-                </li>
-                <li style="padding: var(--space-sm) 0; display: flex; align-items: center; gap: var(--space-sm);">
-                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--color-success)" stroke-width="3" aria-hidden="true">
-                    <polyline points="20 6 9 17 4 12"/>
-                  </svg>
-                  Help fund awards and events
-                </li>
-              </ul>
-
-              <style>.pp-GBQT9ELGRVUE4{text-align:center;border:none;border-radius:0.25rem;min-width:11.625rem;padding:0 2rem;height:2.625rem;font-weight:bold;background-color:#FFD140;color:#000000;font-family:"Helvetica Neue",Arial,sans-serif;font-size:1rem;line-height:1.25rem;cursor:pointer;}</style>
-              <form action="https://www.paypal.com/ncp/payment/GBQT9ELGRVUE4" method="post" target="_blank" style="display:inline-grid;justify-items:center;align-content:start;gap:0.5rem;width:100%;">
-                <input class="pp-GBQT9ELGRVUE4" type="submit" value="Pay Now" style="width:100%;" />
-                <img src="https://www.paypalobjects.com/images/Debit_Credit_APM.svg" alt="cards" />
-                <section style="font-size: 0.75rem;">Powered by <img src="https://www.paypalobjects.com/paypal-ui/logos/svg/paypal-wordmark-color.svg" alt="paypal" style="height:0.875rem;vertical-align:middle;"/></section>
-              </form>
-            </div>
-          </div>
-
+        <div class="cta-block">
+          <a class="btn btn--primary btn--lg" href="join.html">Join or register for the conference</a>
+          <p class="cta-note">One form, one payment, about two minutes. Membership runs a full year
+            from the date you join.</p>
         </div>
+
+        <h2 class="text-center" style="margin-top: var(--space-2xl);">What it costs</h2>
+        <p class="text-muted text-center">Conference registration is a sliding scale, and it includes a year of
+          membership. Pick the rate that honestly describes your situation — we don't check.</p>
+
+        <div class="tiers">
+          <div class="tier">
+            <span class="price">$125</span>
+            <span><span class="name">Rich</span>
+              <span class="who">Assistant, Associate, and Full Professors</span></span>
+          </div>
+          <div class="tier">
+            <span class="price">$75</span>
+            <span><span class="name">Poor</span>
+              <span class="who">Contingent and adjunct faculty</span></span>
+          </div>
+          <div class="tier">
+            <span class="price">$50</span>
+            <span><span class="name">Starving</span>
+              <span class="who">Graduate students and the part-time employed</span></span>
+          </div>
+          <div class="tier">
+            <span class="price">$10</span>
+            <span><span class="name">Undergrad</span>
+              <span class="who">Undergraduate students — valid student ID required at entry</span></span>
+          </div>
+          <div class="tier">
+            <span class="price">$50</span>
+            <span><span class="name">Sustaining Member</span>
+              <span class="who">A year of membership without conference registration, for members
+                who can't make it this year but want to stay connected and support the Society</span></span>
+          </div>
+        </div>
+
+        <div class="aside">
+          <p>Every conference rate includes one year of membership — you don't pay twice. If you're
+            coming to the conference, register at the rate that fits and you're a member.
+            <a href="upcoming-conferences.html">See the upcoming conference →</a></p>
+        </div>
+
       </div>
     </section>
 
-    <!-- Benefits -->
+    <!-- What you get -->
     <section class="section section--gray">
-      <div class="container">
-        <h2 class="text-center mb-2xl">Member Benefits</h2>
-        <div class="grid grid--3">
-          <div class="card feature-card">
-            <svg class="feature-card__icon" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-              <circle cx="32" cy="24" r="12" stroke="currentColor" stroke-width="3"/>
-              <path d="M12 56c0-11 9-20 20-20s20 9 20 20" stroke="currentColor" stroke-width="3"/>
-            </svg>
-            <h3 class="feature-card__title">Community</h3>
-            <p class="card__text">
-              Join a welcoming community of scholars from diverse backgrounds and specializations
-              who share a love of philosophy and humor.
-            </p>
-          </div>
-
-          <div class="card feature-card">
-            <svg class="feature-card__icon" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-              <rect x="8" y="12" width="48" height="40" rx="4" stroke="currentColor" stroke-width="3"/>
-              <path d="M8 24h48" stroke="currentColor" stroke-width="3"/>
-              <path d="M20 32h24M20 40h16" stroke="currentColor" stroke-width="3" stroke-linecap="round"/>
-            </svg>
-            <h3 class="feature-card__title">Conferences</h3>
-            <p class="card__text">
-              Attend our annual conference featuring presentations on philosophy of humor
-              and humorous philosophy from scholars worldwide.
-            </p>
-          </div>
-
-          <div class="card feature-card">
-            <svg class="feature-card__icon" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-              <path d="M32 8L8 20v24l24 12 24-12V20L32 8z" stroke="currentColor" stroke-width="3" stroke-linejoin="round"/>
-              <path d="M8 20l24 12 24-12M32 32v24" stroke="currentColor" stroke-width="3"/>
-            </svg>
-            <h3 class="feature-card__title">Publications</h3>
-            <p class="card__text">
-              Access society publications and stay informed about field-defining work
-              in philosophy of humor.
-            </p>
-          </div>
-
-          <div class="card feature-card">
-            <svg class="feature-card__icon" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-              <circle cx="32" cy="18" r="14" stroke="currentColor" stroke-width="3"/>
-              <path d="M32 4v4M32 28v4M18 18h-4M50 18h-4" stroke="currentColor" stroke-width="3" stroke-linecap="round"/>
-              <path d="M24 40l-4 8h24l-4-8" stroke="currentColor" stroke-width="3" stroke-linejoin="round"/>
-            </svg>
-            <h3 class="feature-card__title">Recognition</h3>
-            <p class="card__text">
-              Eligible for prestigious awards including the Joseph S. Ellin Memorial Essay Prize
-              and the Richard C. Richards Almost Memorial Prize.
-            </p>
-          </div>
-
-          <div class="card feature-card">
-            <svg class="feature-card__icon" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-              <path d="M32 56c13.3 0 24-10.7 24-24S45.3 8 32 8 8 18.7 8 32s10.7 24 24 24z" stroke="currentColor" stroke-width="3"/>
-              <path d="M32 16v16l10 10" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-            <h3 class="feature-card__title">Updates</h3>
-            <p class="card__text">
-              Receive regular updates about conferences, calls for papers, publication
-              opportunities, and society news.
-            </p>
-          </div>
-
-          <div class="card feature-card">
-            <svg class="feature-card__icon" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-              <path d="M48 20c0 8.8-7.2 16-16 16S16 28.8 16 20 23.2 4 32 4s16 7.2 16 16z" stroke="currentColor" stroke-width="3"/>
-              <path d="M20 44c0 8.8 5.4 16 12 16s12-7.2 12-16" stroke="currentColor" stroke-width="3"/>
-              <circle cx="32" cy="20" r="6" stroke="currentColor" stroke-width="3"/>
-            </svg>
-            <h3 class="feature-card__title">Networking</h3>
-            <p class="card__text">
-              Connect with fellow philosophers who value both rigorous scholarship
-              and a lighthearted approach to academic work.
-            </p>
-          </div>
-        </div>
+      <div class="container container--narrow lps-membership">
+        <h2 class="text-center">What you get</h2>
+        <ul class="benefits">
+          <li><h3>Community</h3>
+            <p>Scholars from a wide range of backgrounds and specializations who share an
+              interest in philosophy and humor.</p></li>
+          <li><h3>Conference</h3>
+            <p>Our annual meeting, with presentations on the philosophy of humor and on
+              humorous philosophy from scholars worldwide.</p></li>
+          <li><h3>Publications</h3>
+            <p>Access to Society publications and news of field-defining work.</p></li>
+          <li><h3>Recognition</h3>
+            <p>Eligibility for the Joseph S. Ellin Memorial Essay Prize and the
+              Richard C. Richards Almost Memorial Prize.</p></li>
+          <li><h3>Updates</h3>
+            <p>Calls for papers, publication opportunities, and Society news.</p></li>
+          <li><h3>Networking</h3>
+            <p>Colleagues who value rigorous scholarship and refuse to be solemn about it.</p></li>
+        </ul>
       </div>
     </section>
 
-    <!-- How to Join -->
+    <!-- How to join -->
     <section class="section">
-      <div class="container container--narrow">
-        <h2 class="text-center mb-2xl">How to Join</h2>
+      <div class="container container--narrow lps-membership">
+        <h2 class="text-center">How to join</h2>
+        <p class="text-center">Everything happens on one page. Choose your level, tell us a little about
+          yourself, and pay — we'll have your details and your dues in one place, which
+          means you'll actually make it onto the roster.</p>
 
-        <div class="card" style="padding: var(--space-xl); margin-bottom: var(--space-xl);">
-          <h3>Option 1: Register for the Conference</h3>
-          <p>
-            The easiest way to become a member is to register for our annual conference.
-            Your registration fee includes one year of membership.
-          </p>
-          <a href="upcoming-conferences.html" class="btn btn--outline mt-md">View Conference Details</a>
+        <div class="cta-block">
+          <a class="btn btn--primary btn--lg" href="join.html">Join the Society</a>
         </div>
 
-        <div class="card" style="padding: var(--space-xl); margin-bottom: var(--space-xl);">
-          <h3>Option 2: Become a Sustaining Member</h3>
-          <p>
-            If you're not planning to attend the conference but want to support the society
-            and stay connected, you can become a Sustaining Member for $50/year.
-          </p>
-          <p>
-            <strong>Membership payments can be sent to:</strong><br>
-            Thomas Wilk<br>
-            Widener University<br>
-            Department of Philosophy
-          </p>
-          <a href="contact.html" class="btn btn--outline mt-md">Contact Us for Details</a>
-        </div>
-
-        <div class="card" style="padding: var(--space-xl);">
-          <h3>Questions?</h3>
-          <p>
-            If you have questions about membership or need more information, please don't
-            hesitate to reach out. We're happy to help!
-          </p>
-          <a href="mailto:lighthearted.philosophers@gmail.com" class="btn btn--primary mt-md">
-            Email Us
-          </a>
-        </div>
-      </div>
-    </section>
-
-    <!-- CTA -->
-    <section class="section section--primary">
-      <div class="container text-center">
-        <h2>Ready to Join?</h2>
-        <p class="hero__subtitle">
-          Become part of a community that proves philosophy can be both rigorous and fun.
-        </p>
-        <div class="flex justify-center gap-md flex-wrap">
-          <a href="upcoming-conferences.html" class="btn btn--secondary btn--lg">Register for Conference</a>
-          <a href="contact.html" class="btn btn--outline-white btn--lg">Contact Us</a>
+        <div class="aside">
+          <p><strong>Paying by check?</strong> Mail to Thomas Wilk, Department of Philosophy,
+            Widener University, Chester, PA. Please also email
+            <a href="mailto:lighthearted.philosophers@gmail.com">lighthearted.philosophers@gmail.com</a>
+            so we can log your membership — a check with no message attached is difficult to
+            match to a person.</p>
+          <p><strong>Questions?</strong> Write to us at
+            <a href="mailto:lighthearted.philosophers@gmail.com">lighthearted.philosophers@gmail.com</a>
+            or use the <a href="contact.html">contact form</a>.</p>
         </div>
       </div>
     </section>

@@ -1,0 +1,582 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Join the Lighthearted Philosophers' Society — one form for your details and your dues.">
+  <title>Join | Lighthearted Philosophers' Society</title>
+
+  <!--
+    ============================================================
+    LPS JOIN PAGE — single flow: details, then payment.
+
+    BEFORE THIS WORKS, THE FORM OWNER MUST FILL IN THE GOOGLE
+    FORM ENTRY IDS — seven of them, marked <<< FILL IN >>> in the
+    script below.
+      In your form: three-dot menu > "Get pre-filled link".
+      Type a distinct dummy value in every field (e.g. "AAA",
+      "BBB"...), pick a Membership Level, click "Get link",
+      then "COPY LINK". Paste it in a text editor. You'll see:
+        ...?usp=pp_url&entry.1234567=AAA&entry.7654321=BBB...
+      Match each number to the field by its dummy value.
+
+    ALSO: fix the Membership Level options in the Google Form so
+    they read EXACTLY the five strings in data-level below.
+    Google Forms rejects a multiple-choice value that isn't a
+    character-for-character match, and it fails silently.
+
+    (The PayPal buttons are already in place, copied from the old
+    membership.html.)
+    ============================================================
+  -->
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="css/style.css">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="LPS_Logo.png">
+
+  <!-- Page styles: step indicator, tier chooser, and pay box only.
+       Base type, colors, buttons, and form fields come from css/style.css. -->
+  <style>
+    .lps-join .steps {
+      display: flex;
+      gap: var(--space-sm);
+      align-items: baseline;
+      font-family: var(--font-body);
+      font-size: var(--text-xs);
+      font-weight: 600;
+      letter-spacing: 0.11em;
+      text-transform: uppercase;
+      color: var(--color-gray-500);
+      margin-bottom: var(--space-xl);
+      padding-bottom: var(--space-md);
+      border-bottom: 1px solid var(--color-gray-200);
+    }
+    .lps-join .steps b { color: var(--color-primary); font-weight: 600; }
+    .lps-join .steps span { opacity: 0.45; }
+
+    .lps-join fieldset { border: 0; margin: 0 0 var(--space-xl); padding: 0; }
+    .lps-join legend {
+      font-family: var(--font-body);
+      font-size: var(--text-xs);
+      font-weight: 600;
+      letter-spacing: 0.11em;
+      text-transform: uppercase;
+      color: var(--color-gray-500);
+      padding: 0;
+      margin-bottom: var(--space-md);
+    }
+
+    /* Tier chooser */
+    .lps-join .tier {
+      display: block;
+      border: 2px solid var(--color-gray-200);
+      border-radius: var(--radius-md);
+      padding: var(--space-md) var(--space-lg);
+      margin-bottom: var(--space-sm);
+      cursor: pointer;
+      background: var(--color-white);
+      transition: border-color var(--transition-fast), background-color var(--transition-fast);
+    }
+    .lps-join .tier:hover { border-color: var(--color-primary); }
+    .lps-join .tier:has(input:checked) {
+      border-color: var(--color-primary);
+      background: var(--color-gray-100);
+      box-shadow: inset 4px 0 0 var(--color-primary);
+    }
+    .lps-join .tier:has(input:focus-visible) {
+      outline: 3px solid var(--color-secondary);
+      outline-offset: 2px;
+    }
+    .lps-join .tier input { position: absolute; opacity: 0; width: 0; height: 0; }
+    .lps-join .tier .row {
+      display: flex;
+      justify-content: space-between;
+      gap: var(--space-md);
+      align-items: baseline;
+    }
+    .lps-join .tier .name { font-weight: 600; color: var(--color-gray-800); }
+    .lps-join .tier .price {
+      font-weight: 700;
+      white-space: nowrap;
+      color: var(--color-primary);
+    }
+    .lps-join .tier .note {
+      display: block;
+      font-size: var(--text-sm);
+      color: var(--color-gray-500);
+      margin-top: var(--space-xs);
+    }
+
+    .lps-join .opt { font-weight: 400; color: var(--color-gray-500); }
+
+    .lps-join .err {
+      color: var(--color-error);
+      font-size: var(--text-sm);
+      margin: var(--space-sm) 0 0;
+    }
+    .lps-join .err:empty { display: none; }
+
+    /* Payment box */
+    .lps-join .paybox {
+      border: 1px solid var(--color-gray-200);
+      border-left: 4px solid var(--color-primary);
+      border-radius: var(--radius-md);
+      background: var(--color-off-white);
+      padding: var(--space-xl);
+      margin-bottom: var(--space-lg);
+    }
+    .lps-join .paybox .what {
+      display: flex;
+      justify-content: space-between;
+      gap: var(--space-md);
+      align-items: baseline;
+      padding-bottom: var(--space-md);
+      margin-bottom: var(--space-lg);
+      border-bottom: 1px solid var(--color-gray-200);
+    }
+    .lps-join .paybox .what .price {
+      font-size: var(--text-xl);
+      font-weight: 700;
+      color: var(--color-primary);
+    }
+
+    .lps-join .back-link {
+      background: none;
+      border: 0;
+      padding: var(--space-xs) 0;
+      font-family: var(--font-body);
+      font-size: var(--text-base);
+      color: var(--color-primary);
+      text-decoration: underline;
+      text-underline-offset: 3px;
+      cursor: pointer;
+      transition: color var(--transition-fast);
+    }
+    .lps-join .back-link:hover { color: var(--color-primary-light); }
+
+    .lps-join .fine { font-size: var(--text-sm); color: var(--color-gray-500); }
+    .lps-join [hidden] { display: none !important; }
+
+    @media (prefers-reduced-motion: no-preference) {
+      .lps-join .panel { animation: lpsfade 0.28s ease-out; }
+      @keyframes lpsfade {
+        from { opacity: 0; transform: translateY(6px); }
+        to { opacity: 1; transform: none; }
+      }
+    }
+
+    /* Geocities Mode participation — keep the join flow legible when
+       js/main.js toggles .geocities-mode on <body>. */
+    .geocities-mode .lps-join .tier,
+    .geocities-mode .lps-join .paybox {
+      background: #c0c0c0 !important;
+      border: 3px outset #fff !important;
+      border-radius: 0 !important;
+      box-shadow: none !important;
+    }
+    .geocities-mode .lps-join .tier .name,
+    .geocities-mode .lps-join .tier .note,
+    .geocities-mode .lps-join .paybox .what * { color: #000 !important; text-shadow: none !important; }
+    .geocities-mode .lps-join .tier .price,
+    .geocities-mode .lps-join .paybox .what .price { color: #000080 !important; }
+    .geocities-mode .lps-join legend,
+    .geocities-mode .lps-join .form-label,
+    .geocities-mode .lps-join .steps { color: #fff !important; }
+    .geocities-mode .lps-join .steps b { color: #ffff00 !important; }
+    .geocities-mode .lps-join .err { color: #ffff00 !important; }
+    .geocities-mode .lps-join .fine,
+    .geocities-mode .lps-join .opt { color: #fff !important; }
+    .geocities-mode .lps-join .paybox .fine { color: #000 !important; }
+    .geocities-mode .lps-join .back-link { color: #00ffff !important; }
+  </style>
+</head>
+<body>
+  <!-- Skip Link for Accessibility -->
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <!-- Header -->
+  <header class="header" role="banner">
+    <div class="header__inner">
+      <a href="index.html" class="logo" aria-label="Lighthearted Philosophers' Society Home">
+        <img src="LPS_Logo.png" alt="The Lighthearted Philosophers' Society" class="logo__icon">
+      </a>
+
+      <nav class="nav" role="navigation" aria-label="Main navigation">
+        <button class="nav-toggle" aria-expanded="false" aria-controls="nav-list" aria-label="Toggle navigation menu">
+          <span class="nav-toggle__bar"></span>
+          <span class="nav-toggle__bar"></span>
+          <span class="nav-toggle__bar"></span>
+        </button>
+
+        <ul class="nav__list" id="nav-list">
+          <li><a href="index.html" class="nav__link">Home</a></li>
+          <li><a href="about.html" class="nav__link">About</a></li>
+          <li class="nav__item--dropdown">
+            <a href="upcoming-conferences.html" class="nav__link">Conferences</a>
+            <ul class="nav__dropdown">
+              <li><a href="upcoming-conferences.html" class="nav__dropdown-link">Upcoming Conferences</a></li>
+              <li><a href="past-conferences.html" class="nav__dropdown-link">Past Conferences</a></li>
+              <li><a href="venue.html" class="nav__dropdown-link">Venue Information</a></li>
+            </ul>
+          </li>
+          <li><a href="membership.html" class="nav__link nav__link--active">Membership</a></li>
+          <li><a href="resources.html" class="nav__link">Resources</a></li>
+          <li><a href="publications.html" class="nav__link">Publications</a></li>
+          <li><a href="news.html" class="nav__link">News</a></li>
+          <li><a href="contact.html" class="nav__link">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main id="main-content">
+    <!-- Page Hero -->
+    <section class="hero" style="min-height: 40vh;">
+      <div class="hero__bg" aria-hidden="true"></div>
+      <div class="hero__content">
+        <h1 class="hero__title">Join the Society</h1>
+        <p class="hero__subtitle">
+          Tell us who you are, then pay your dues. Both happen right here — one visit, one form.
+        </p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container container--narrow">
+        <div class="lps-join">
+
+          <!-- ================= STEP 1 ================= -->
+          <section class="panel" id="lps-step1">
+            <p class="steps"><b>Step 1 — Your details</b> <span>→ Step 2 — Payment</span></p>
+
+            <fieldset>
+              <legend>Membership level</legend>
+
+              <!--
+                data-level MUST exactly match a Membership Level option in the
+                Google Form. data-price and data-desc drive the Step 2 summary.
+              -->
+              <label class="tier">
+                <input type="radio" name="tier" value="rich" required
+                       data-level="Rich — Conference registration ($125)"
+                       data-price="$125" data-slot="slot-rich">
+                <span class="row"><span class="name">Rich</span><span class="price">$125</span></span>
+                <span class="note">Conference registration + one year of membership. Assistant, Associate, and Full Professors.</span>
+              </label>
+
+              <label class="tier">
+                <input type="radio" name="tier" value="poor"
+                       data-level="Poor — Conference registration ($75)"
+                       data-price="$75" data-slot="slot-poor">
+                <span class="row"><span class="name">Poor</span><span class="price">$75</span></span>
+                <span class="note">Conference registration + one year of membership. Contingent and adjunct faculty.</span>
+              </label>
+
+              <label class="tier">
+                <input type="radio" name="tier" value="starving"
+                       data-level="Starving — Conference registration ($50)"
+                       data-price="$50" data-slot="slot-starving">
+                <span class="row"><span class="name">Starving</span><span class="price">$50</span></span>
+                <span class="note">Conference registration + one year of membership. Graduate students and part-time employed.</span>
+              </label>
+
+              <label class="tier">
+                <input type="radio" name="tier" value="undergrad"
+                       data-level="Undergrad — Conference registration ($10)"
+                       data-price="$10" data-slot="slot-undergrad">
+                <span class="row"><span class="name">Undergrad</span><span class="price">$10</span></span>
+                <span class="note">Conference registration + one year of membership. Valid student ID required at entry.</span>
+              </label>
+
+              <label class="tier">
+                <input type="radio" name="tier" value="sustaining"
+                       data-level="Sustaining Member ($50/year)"
+                       data-price="$50" data-slot="slot-sustaining">
+                <span class="row"><span class="name">Sustaining Member</span><span class="price">$50</span></span>
+                <span class="note">One year of membership without conference registration. For members not attending this year.</span>
+              </label>
+
+              <p class="err" id="err-tier"></p>
+            </fieldset>
+
+            <fieldset>
+              <legend>About you</legend>
+
+              <div class="form-group">
+                <label class="form-label" for="f-first">First name</label>
+                <input type="text" class="form-input" id="f-first" autocomplete="given-name" required>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" for="f-last">Last name</label>
+                <input type="text" class="form-input" id="f-last" autocomplete="family-name" required>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" for="f-email">Email address</label>
+                <input type="email" class="form-input" id="f-email" autocomplete="email" required>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" for="f-addr">(Meta) physical address <span class="opt">— optional</span></label>
+                <textarea class="form-textarea" id="f-addr" autocomplete="street-address" style="min-height: 5rem;"></textarea>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" for="f-why">Reasons for joining <span class="opt">— optional</span></label>
+                <textarea class="form-textarea" id="f-why" style="min-height: 5rem;"></textarea>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" for="f-interest">Areas of humor / philosophical interest <span class="opt">— optional</span></label>
+                <textarea class="form-textarea" id="f-interest" style="min-height: 5rem;"></textarea>
+              </div>
+
+              <p class="err" id="err-form"></p>
+            </fieldset>
+
+            <button type="button" class="btn btn--primary" id="lps-continue">Continue to payment</button>
+          </section>
+
+          <!-- ================= STEP 2 ================= -->
+          <section class="panel" id="lps-step2" hidden>
+            <p class="steps"><span>Step 1 — Your details ✓</span> <b>→ Step 2 — Payment</b></p>
+
+            <h2>Pay your dues</h2>
+            <p class="text-muted mb-lg">We have your details. Complete payment below and you're a member.</p>
+
+            <div class="paybox">
+              <div class="what">
+                <span><strong id="lps-tiername"></strong><br>
+                  <span class="fine" id="lps-tierfor"></span></span>
+                <span class="price" id="lps-tierprice"></span>
+              </div>
+
+              <!-- PayPal buttons, copied verbatim from the old membership.html -->
+              <div class="payslot" id="slot-rich" hidden>
+                <style>.pp-98N3C65YFSQGA{text-align:center;border:none;border-radius:0.25rem;min-width:11.625rem;padding:0 2rem;height:2.625rem;font-weight:bold;background-color:#FFD140;color:#000000;font-family:"Helvetica Neue",Arial,sans-serif;font-size:1rem;line-height:1.25rem;cursor:pointer;}</style>
+                <form action="https://www.paypal.com/ncp/payment/98N3C65YFSQGA" method="post" target="_blank" style="display:inline-grid;justify-items:center;align-content:start;gap:0.5rem;">
+                  <input class="pp-98N3C65YFSQGA" type="submit" value="Pay Now" />
+                  <img src="https://www.paypalobjects.com/images/Debit_Credit_APM.svg" alt="cards" />
+                  <section style="font-size: 0.75rem;">Powered by <img src="https://www.paypalobjects.com/paypal-ui/logos/svg/paypal-wordmark-color.svg" alt="paypal" style="height:0.875rem;vertical-align:middle;"/></section>
+                </form>
+              </div>
+
+              <div class="payslot" id="slot-poor" hidden>
+                <style>.pp-YRFVJSHGRM5QN{text-align:center;border:none;border-radius:0.25rem;min-width:11.625rem;padding:0 2rem;height:2.625rem;font-weight:bold;background-color:#FFD140;color:#000000;font-family:"Helvetica Neue",Arial,sans-serif;font-size:1rem;line-height:1.25rem;cursor:pointer;}</style>
+                <form action="https://www.paypal.com/ncp/payment/YRFVJSHGRM5QN" method="post" target="_blank" style="display:inline-grid;justify-items:center;align-content:start;gap:0.5rem;">
+                  <input class="pp-YRFVJSHGRM5QN" type="submit" value="Pay Now" />
+                  <img src="https://www.paypalobjects.com/images/Debit_Credit_APM.svg" alt="cards" />
+                  <section style="font-size: 0.75rem;">Powered by <img src="https://www.paypalobjects.com/paypal-ui/logos/svg/paypal-wordmark-color.svg" alt="paypal" style="height:0.875rem;vertical-align:middle;"/></section>
+                </form>
+              </div>
+
+              <div class="payslot" id="slot-starving" hidden>
+                <style>.pp-YP4LXZ4ZAYDTJ{text-align:center;border:none;border-radius:0.25rem;min-width:11.625rem;padding:0 2rem;height:2.625rem;font-weight:bold;background-color:#FFD140;color:#000000;font-family:"Helvetica Neue",Arial,sans-serif;font-size:1rem;line-height:1.25rem;cursor:pointer;}</style>
+                <form action="https://www.paypal.com/ncp/payment/YP4LXZ4ZAYDTJ" method="post" target="_blank" style="display:inline-grid;justify-items:center;align-content:start;gap:0.5rem;">
+                  <input class="pp-YP4LXZ4ZAYDTJ" type="submit" value="Pay Now" />
+                  <img src="https://www.paypalobjects.com/images/Debit_Credit_APM.svg" alt="cards" />
+                  <section style="font-size: 0.75rem;">Powered by <img src="https://www.paypalobjects.com/paypal-ui/logos/svg/paypal-wordmark-color.svg" alt="paypal" style="height:0.875rem;vertical-align:middle;"/></section>
+                </form>
+              </div>
+
+              <div class="payslot" id="slot-undergrad" hidden>
+                <style>.pp-7BHEHVW9Z83AA{text-align:center;border:none;border-radius:0.25rem;min-width:11.625rem;padding:0 2rem;height:2.625rem;font-weight:bold;background-color:#FFD140;color:#000000;font-family:"Helvetica Neue",Arial,sans-serif;font-size:1rem;line-height:1.25rem;cursor:pointer;}</style>
+                <form action="https://www.paypal.com/ncp/payment/7BHEHVW9Z83AA" method="post" target="_blank" style="display:inline-grid;justify-items:center;align-content:start;gap:0.5rem;">
+                  <input class="pp-7BHEHVW9Z83AA" type="submit" value="Pay Now" />
+                  <img src="https://www.paypalobjects.com/images/Debit_Credit_APM.svg" alt="cards" />
+                  <section style="font-size: 0.75rem;">Powered by <img src="https://www.paypalobjects.com/paypal-ui/logos/svg/paypal-wordmark-color.svg" alt="paypal" style="height:0.875rem;vertical-align:middle;"/></section>
+                </form>
+              </div>
+
+              <div class="payslot" id="slot-sustaining" hidden>
+                <style>.pp-GBQT9ELGRVUE4{text-align:center;border:none;border-radius:0.25rem;min-width:11.625rem;padding:0 2rem;height:2.625rem;font-weight:bold;background-color:#FFD140;color:#000000;font-family:"Helvetica Neue",Arial,sans-serif;font-size:1rem;line-height:1.25rem;cursor:pointer;}</style>
+                <form action="https://www.paypal.com/ncp/payment/GBQT9ELGRVUE4" method="post" target="_blank" style="display:inline-grid;justify-items:center;align-content:start;gap:0.5rem;width:100%;">
+                  <input class="pp-GBQT9ELGRVUE4" type="submit" value="Pay Now" style="width:100%;" />
+                  <img src="https://www.paypalobjects.com/images/Debit_Credit_APM.svg" alt="cards" />
+                  <section style="font-size: 0.75rem;">Powered by <img src="https://www.paypalobjects.com/paypal-ui/logos/svg/paypal-wordmark-color.svg" alt="paypal" style="height:0.875rem;vertical-align:middle;"/></section>
+                </form>
+              </div>
+            </div>
+
+            <button type="button" class="back-link" id="lps-back">← Change level or correct my details</button>
+
+            <p class="fine">Prefer to pay by check? Mail to Thomas Wilk, Department of Philosophy,
+              Widener University. Email us at
+              <a href="mailto:lighthearted.philosophers@gmail.com">lighthearted.philosophers@gmail.com</a>
+              so we can log your membership.</p>
+          </section>
+
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer" role="contentinfo">
+    <div class="container">
+      <div class="footer__grid">
+        <div>
+          <h3 class="footer__title">Lighthearted Philosophers' Society</h3>
+          <p>An organization for philosophers who approach their work with a sense of humor.</p>
+        </div>
+
+        <div>
+          <h3 class="footer__title">Quick Links</h3>
+          <ul class="footer__list">
+            <li><a href="about.html" class="footer__link">About Us</a></li>
+            <li><a href="upcoming-conferences.html" class="footer__link">Conferences</a></li>
+            <li><a href="membership.html" class="footer__link">Membership</a></li>
+            <li><a href="resources.html" class="footer__link">Resources</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h3 class="footer__title">Conference</h3>
+          <ul class="footer__list">
+            <li><a href="upcoming-conferences.html" class="footer__link">Upcoming Events</a></li>
+            <li><a href="past-conferences.html" class="footer__link">Past Conferences</a></li>
+            <li><a href="venue.html" class="footer__link">Venue Info</a></li>
+            <li><a href="publications.html" class="footer__link">Publications</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h3 class="footer__title">Contact</h3>
+          <ul class="footer__list">
+            <li><a href="mailto:lighthearted.philosophers@gmail.com" class="footer__link">lighthearted.philosophers@gmail.com</a></li>
+            <li><a href="contact.html" class="footer__link">Contact Form</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer__bottom">
+        <p class="footer__copyright">
+          &copy; <span id="year"></span> Lighthearted Philosophers' Society. All rights reserved.
+        </p>
+        <button class="geocities-btn" aria-label="Activate Geocities Mode">
+          <span>Geocities Mode</span>
+        </button>
+      </div>
+    </div>
+  </footer>
+
+  <!-- JavaScript -->
+  <script src="js/main.js"></script>
+  <script>
+  (function(){
+    "use strict";
+
+    var FORM_ID = "1FAIpQLScGaWP2ePK6bwvs8Lt2vmuBQu0646SX9bxaGawYM3rUMCN0-g";
+    var POST_URL = "https://docs.google.com/forms/d/e/" + FORM_ID + "/formResponse";
+    var FORM_URL = "https://docs.google.com/forms/d/e/" + FORM_ID + "/viewform";
+
+    // <<< FILL IN (1) >>> Replace each 0000000 with the real entry number.
+    var ENTRY = {
+      last:     "entry.149091018",
+      first:    "entry.1556132926",
+      email:    "entry.50992122",
+      address:  "entry.1885434786",
+      why:      "entry.982851616",
+      interest: "entry.1480503547",
+      level:    "entry.753570771"
+    };
+
+    var $  = function(id){ return document.getElementById(id); };
+    var s1 = $("lps-step1"), s2 = $("lps-step2");
+    var errTier = $("err-tier"), errForm = $("err-form");
+    var go = $("lps-continue");
+
+    function chosen(){
+      return document.querySelector('.lps-join input[name="tier"]:checked');
+    }
+
+    function validate(){
+      errTier.textContent = "";
+      errForm.textContent = "";
+      var ok = true;
+
+      if(!chosen()){
+        errTier.textContent = "Choose a membership level to continue.";
+        ok = false;
+      }
+      if(!$("f-first").value.trim() || !$("f-last").value.trim()){
+        errForm.textContent = "First and last name are required.";
+        ok = false;
+      } else if(!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test($("f-email").value.trim())){
+        errForm.textContent = "Enter an email address we can reach you at.";
+        ok = false;
+      }
+      if(!ok){
+        (errTier.textContent ? errTier : errForm)
+          .scrollIntoView({block:"center", behavior:"smooth"});
+      }
+      return ok;
+    }
+
+    function showPayment(radio){
+      $("lps-tiername").textContent  = radio.closest(".tier").querySelector(".name").textContent;
+      $("lps-tierfor").textContent   = radio.closest(".tier").querySelector(".note").textContent;
+      $("lps-tierprice").textContent = radio.dataset.price;
+
+      Array.prototype.forEach.call(
+        document.querySelectorAll(".lps-join .payslot"),
+        function(el){ el.hidden = true; }
+      );
+      var slot = $(radio.dataset.slot);
+      if(slot) slot.hidden = false;
+
+      s1.hidden = true;
+      s2.hidden = false;
+      window.scrollTo({top:0, behavior:"smooth"});
+    }
+
+    go.addEventListener("click", function(){
+      if(!validate()) return;
+
+      var radio = chosen();
+      var fd = new FormData();
+      fd.append(ENTRY.last,     $("f-last").value.trim());
+      fd.append(ENTRY.first,    $("f-first").value.trim());
+      fd.append(ENTRY.email,    $("f-email").value.trim());
+      fd.append(ENTRY.address,  $("f-addr").value.trim());
+      fd.append(ENTRY.why,      $("f-why").value.trim());
+      fd.append(ENTRY.interest, $("f-interest").value.trim());
+      fd.append(ENTRY.level,    radio.dataset.level);
+
+      go.disabled = true;
+      go.textContent = "Saving your details…";
+
+      // no-cors: the request goes through, but we can't read the response.
+      // Google Forms returns an opaque result either way, so a resolved
+      // promise means "sent", not "recorded". See the notes file.
+      fetch(POST_URL, { method:"POST", mode:"no-cors", body:fd })
+        .then(function(){ showPayment(radio); })
+        .catch(function(){
+          go.disabled = false;
+          go.textContent = "Continue to payment";
+          errForm.innerHTML = 'We could not save your details. ' +
+            'Please <a href="' + FORM_URL + '" target="_blank" rel="noopener">' +
+            'use our membership form directly</a>, then return here to pay.';
+        });
+    });
+
+    $("lps-back").addEventListener("click", function(){
+      s2.hidden = true;
+      s1.hidden = false;
+      go.disabled = false;
+      go.textContent = "Continue to payment";
+      window.scrollTo({top:0, behavior:"smooth"});
+    });
+  })();
+  </script>
+</body>
+</html>
