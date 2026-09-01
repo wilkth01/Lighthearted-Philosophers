@@ -1,0 +1,42 @@
+# Normalize line endings for text files, and never touch binaries.
+#
+# Git guesses whether a file is text by looking for a NUL byte in its first
+# 8000 bytes. Some PDFs have no NUL that early, so Git treats them as text and
+# core.autocrlf rewrites their line endings on checkout, corrupting the file.
+# The rules below settle it explicitly instead of relying on that guess.
+
+* text=auto
+
+# Web sources
+*.html  text
+*.css   text
+*.js    text
+*.json  text
+*.svg   text
+*.md    text
+CNAME   text
+
+# Documents
+*.pdf   binary
+*.docx  binary
+*.doc   binary
+*.pptx  binary
+*.xlsx  binary
+
+# Images
+*.png   binary
+*.jpg   binary
+*.jpeg  binary
+*.gif   binary
+*.webp  binary
+*.avif  binary
+*.ico   binary
+
+# Fonts and media
+*.woff  binary
+*.woff2 binary
+*.ttf   binary
+*.otf   binary
+*.eot   binary
+*.mp4   binary
+*.mp3   binary
