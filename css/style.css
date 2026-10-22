@@ -1421,7 +1421,8 @@ blink {
    ========================================================================== */
 .carousel {
   position: relative;
-  margin: var(--space-lg) 0;
+  max-width: 420px;
+  margin: var(--space-lg) auto;
   border-radius: var(--radius-md);
   overflow: hidden;
   background: #000;
