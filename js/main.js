@@ -420,3 +420,45 @@
   }
 
 })();
+
+// ==========================================================================
+// Photo Carousel
+// ==========================================================================
+(function() {
+  document.querySelectorAll('.carousel').forEach(function(carousel) {
+    const track = carousel.querySelector('.carousel__track');
+    const slides = carousel.querySelectorAll('.carousel__slide');
+    const dotsWrap = carousel.querySelector('.carousel__dots');
+    let index = 0;
+
+    const dots = Array.from(slides).map(function(_, i) {
+      const dot = document.createElement('button');
+      dot.type = 'button';
+      dot.className = 'carousel__dot';
+      dot.setAttribute('aria-label', 'Go to photo ' + (i + 1));
+      dot.addEventListener('click', function() { show(i); });
+      dotsWrap.appendChild(dot);
+      return dot;
+    });
+
+    function show(i) {
+      index = (i + slides.length) % slides.length;
+      track.style.transform = 'translateX(' + (-100 * index) + '%)';
+      slides.forEach(function(slide, n) {
+        slide.setAttribute('aria-hidden', n === index ? 'false' : 'true');
+      });
+      dots.forEach(function(dot, n) {
+        dot.setAttribute('aria-current', n === index ? 'true' : 'false');
+      });
+    }
+
+    carousel.querySelector('.carousel__btn--prev').addEventListener('click', function() { show(index - 1); });
+    carousel.querySelector('.carousel__btn--next').addEventListener('click', function() { show(index + 1); });
+    carousel.addEventListener('keydown', function(e) {
+      if (e.key === 'ArrowLeft') show(index - 1);
+      if (e.key === 'ArrowRight') show(index + 1);
+    });
+
+    show(0);
+  });
+})();

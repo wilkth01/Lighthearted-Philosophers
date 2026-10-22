@@ -1416,6 +1416,85 @@ blink {
   }
 }
 
+/* ==========================================================================
+   Photo Carousel
+   ========================================================================== */
+.carousel {
+  position: relative;
+  margin: var(--space-lg) 0;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  background: #000;
+}
+
+.carousel__track {
+  display: flex;
+  transition: transform 0.4s ease;
+}
+
+.carousel__slide {
+  flex: 0 0 100%;
+  margin: 0;
+}
+
+.carousel__slide img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+}
+
+.carousel__btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 44px;
+  height: 44px;
+  border: none;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.55);
+  color: #fff;
+  font-size: 1.5rem;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.carousel__btn:hover,
+.carousel__btn:focus-visible {
+  background: rgba(0, 0, 0, 0.8);
+}
+
+.carousel__btn--prev { left: 0.5rem; }
+.carousel__btn--next { right: 0.5rem; }
+
+.carousel__dots {
+  position: absolute;
+  bottom: 0.75rem;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.carousel__dot {
+  width: 10px;
+  height: 10px;
+  padding: 0;
+  border: 1px solid #fff;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.4);
+  cursor: pointer;
+}
+
+.carousel__dot[aria-current="true"] {
+  background: #fff;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .carousel__track { transition: none; }
+}
+
 /* Print Styles */
 @media print {
   .header,
